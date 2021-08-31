@@ -1,0 +1,49 @@
+syntax = "proto3";
+
+package proto;
+
+option go_package = "github.com/example/path/gen;gen";
+
+service Examples{
+  // Sends a greeting
+
+  rpc Add (AddRequest) returns (AddResponse);
+  rpc Maximum (stream MaximumRequest) returns (MaximumResponse);
+  rpc Multiply (MultiplyRequest) returns (stream MultiplyResponse);
+  rpc RunningAverage (stream RunningAverageRequest) returns (stream RunningAverageResponse);
+}
+
+message AddRequest {
+  int64 a = 1;
+  int64 b = 2;
+}
+
+message AddResponse {
+  int64 sum = 1;
+}
+
+message MaximumRequest {
+  int64 a = 1;
+}
+
+message MaximumResponse {
+  int64 maximum = 1;
+}
+
+
+message MultiplyRequest {
+  int64 a = 1;
+}
+
+message MultiplyResponse {
+  string table = 1;
+}
+
+message RunningAverageRequest {
+  float a = 1;
+}
+
+message RunningAverageResponse {
+  float average = 1;
+}
+
